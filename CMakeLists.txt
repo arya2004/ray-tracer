@@ -4,4 +4,8 @@ project(Tray_Racing_Computer_Graphics)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Tray_Racing_Computer_Graphics main.cpp
-        CApp.h)
+        CApp.h
+        CApp.cpp
+        RayTrace/Image.cpp
+        RayTrace/Image.hpp
+)

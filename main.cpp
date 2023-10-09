@@ -1,7 +1,8 @@
 #include <iostream>
-#include <SDL2/SDL.h>
-
-int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+#include "CApp.h"
+int main(int argc, char* argv[]) {
+    CApp appie;
+    return appie.OnExecute();
 }
+
+//g++ main.cpp CApp.cpp -lSDL2 -std=c++17

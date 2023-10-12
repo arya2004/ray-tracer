@@ -27,6 +27,10 @@ class Image
     //display image
     void Display();
 
+    //func to return dim of image
+    int GetXSize();
+    int GetYSize();
+
     private:
         Uint32 ConvertColor(const double red, const double green, const double blue);
         void InitTexture();

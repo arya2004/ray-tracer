@@ -7,7 +7,7 @@
 
 #include <SDL2/SDL.h>
 #include "./RayTrace/Image.hpp"
-
+#include "./RayTrace/Scene.hpp"
 class CApp
 {
     public:
@@ -22,6 +22,8 @@ class CApp
     private:
         //an instance of Image class to store image
         Image m_image;
+        //an instance of schene class to store image
+        RT::Scene m_Scene;
         //sdl things
         bool isRunning;
         SDL_Window *pWindow;

@@ -8,4 +8,10 @@ add_executable(Tray_Racing_Computer_Graphics main.cpp
         CApp.cpp
         RayTrace/Image.cpp
         RayTrace/Image.hpp
+        RayTrace/Scene.cpp
+        RayTrace/Scene.hpp
+        RayTrace/Ray.cpp
+        RayTrace/Ray.hpp
+        RayTrace/Camera.cpp
+        RayTrace/Camera.hpp
 )

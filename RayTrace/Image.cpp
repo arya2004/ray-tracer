@@ -42,6 +42,16 @@ void Image::SetPixel(const int x, const int y, const double red, const double bl
     m_bChannel.at(x).at(y) = blue;
 }
 
+
+int Image::GetXSize(){
+    return m_xSize;
+}
+
+int Image::GetYSize(){
+    return m_ySize;
+}
+
+
 //display image to renderer
 
 void Image::Display() {

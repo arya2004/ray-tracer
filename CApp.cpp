@@ -23,29 +23,19 @@ bool CApp::OnInit() {
         pRenderer = SDL_CreateRenderer(pWindow, -1, 0);
         //init Image instance
         m_image.Initialize(1000,1000, pRenderer);
+        //set backdround to white
+        SDL_SetRenderDrawColor(pRenderer, 255,255,255,255);
+        SDL_RenderClear(pRenderer);
 
-        //test camera class
-        RT::Camera testCamera;
-        testCamera.SetPosition(qbVector<double>(std::vector<double>{0.0,0.0,0.0}));
-        testCamera.SetLookAt(qbVector<double>(std::vector<double>{0.0,2.0, 0.0}));
-        testCamera.SetUp(qbVector<double>(std::vector<double>{0.0,0.0,1.0}));
-        testCamera.SetLength(1.0);
-        testCamera.SetHorizontalSize(1.0);
-        testCamera.SetAspect(1.0);
-        testCamera.UpdateCameraGeometry();
+        //render the scene
+        m_Scene.Render(m_image);
 
-        //get screen centre an u,v vector and display
-        auto screenCentre = testCamera.GetScreenCentre();
-        auto screenU = testCamera.GetU();
-        auto screenV = testCamera.GetV();
+        //display image
+        m_image.Display();
 
-        //display
-        std::cout << "\nCamera screen cnetre" << std::endl;
-        PrintVector(screenCentre);
-        std::cout << "\nCamera U vector" << std::endl;
-        PrintVector(screenU);
-        std::cout << "\nCamera v vec" << std::endl;
-        PrintVector(screenV);
+        //show result
+        SDL_RenderPresent(pRenderer);
+
 
     }
     else
@@ -88,7 +78,7 @@ void CApp::OnLoop() {
 
 void CApp::OnRender() {
     //set background color
-    SDL_SetRenderDrawColor(pRenderer, 255, 255,255,255);
+  /*  SDL_SetRenderDrawColor(pRenderer, 255, 255,255,255);
     SDL_RenderClear(pRenderer);
 
     //render scene
@@ -99,6 +89,7 @@ void CApp::OnRender() {
 
     //display result
     SDL_RenderPresent(pRenderer);
+    */
 }
 
 void CApp::OnExit()

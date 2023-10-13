@@ -14,4 +14,8 @@ add_executable(Tray_Racing_Computer_Graphics main.cpp
         RayTrace/Ray.hpp
         RayTrace/Camera.cpp
         RayTrace/Camera.hpp
+        RayTrace/ObjectBase.cpp
+        RayTrace/ObjectBase.hpp
+        RayTrace/ObjSphere.cpp
+        RayTrace/ObjSphere.hpp
 )

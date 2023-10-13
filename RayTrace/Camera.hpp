@@ -34,7 +34,7 @@ namespace RT
         double GEtAspect();
 
         //func to generate ray
-        Ray GenerateRay(float proScreenX, float proScreenY);
+        bool GenerateRay(float proScreenX, float proScreenY, RT::Ray &cameraRay);
         //pos on screen we wanna generate ray from pinhole;
         //update camera geomerty
         void UpdateCameraGeometry();

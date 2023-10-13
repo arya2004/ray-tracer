@@ -8,6 +8,7 @@
 #include <SDL2/SDL.h>
 #include "./RayTrace/Image.hpp"
 #include "./RayTrace/Scene.hpp"
+#include "./RayTrace/Camera.hpp"
 class CApp
 {
     public:
@@ -18,6 +19,10 @@ class CApp
         void OnLoop();
         void OnRender();
         void OnExit();
+
+
+    private:
+        void PrintVector(const qbVector<double> &inputVector);
 
     private:
         //an instance of Image class to store image

@@ -18,12 +18,10 @@ namespace RT
         qbVector<double> GetPoint2() const;
 
         public:
-        qbVector<double> m_point1 ;
-        qbVector<double> m_point2 ;
-        qbVector<double> m_lab ;
-       // qbVector<double> m_point1 (3);
-       // qbVector<double> m_point2 (3);
-       // qbVector<double> m_lab (3);
+        qbVector<double> m_point1 {3};
+        qbVector<double> m_point2 {3};
+        qbVector<double> m_lab {3};
+
         //lab is vec from a to b
     };
 }

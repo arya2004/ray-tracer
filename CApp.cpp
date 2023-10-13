@@ -3,6 +3,7 @@
 //
 
 #include "CApp.h"
+#include "./RayTrace/qbLinAlg/qbVector.h"
 
 CApp::CApp() {
     isRunning = true;
@@ -23,6 +24,28 @@ bool CApp::OnInit() {
         //init Image instance
         m_image.Initialize(1000,1000, pRenderer);
 
+        //test camera class
+        RT::Camera testCamera;
+        testCamera.SetPosition(qbVector<double>(std::vector<double>{0.0,0.0,0.0}));
+        testCamera.SetLookAt(qbVector<double>(std::vector<double>{0.0,2.0, 0.0}));
+        testCamera.SetUp(qbVector<double>(std::vector<double>{0.0,0.0,1.0}));
+        testCamera.SetLength(1.0);
+        testCamera.SetHorizontalSize(1.0);
+        testCamera.SetAspect(1.0);
+        testCamera.UpdateCameraGeometry();
+
+        //get screen centre an u,v vector and display
+        auto screenCentre = testCamera.GetScreenCentre();
+        auto screenU = testCamera.GetU();
+        auto screenV = testCamera.GetV();
+
+        //display
+        std::cout << "\nCamera screen cnetre" << std::endl;
+        PrintVector(screenCentre);
+        std::cout << "\nCamera U vector" << std::endl;
+        PrintVector(screenU);
+        std::cout << "\nCamera v vec" << std::endl;
+        PrintVector(screenV);
 
     }
     else
@@ -85,4 +108,13 @@ void CApp::OnExit()
     SDL_DestroyWindow(pWindow);
     pWindow = NULL;
     SDL_Quit();
+}
+
+//private func
+
+void CApp::PrintVector(const qbVector<double> &inputVector) {
+    int nRows = inputVector.GetNumDims();
+    for (int row = 0; row < nRows; ++row) {
+        std::cout << std::fixed << std::setprecision(3) << inputVector.GetElement(row) << std::endl;
+    }
 }

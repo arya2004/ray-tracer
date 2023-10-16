@@ -31,7 +31,29 @@ bool RT::ObjSphere::TestIntersection(const RT::Ray &castRay, qbVector<double> &i
 
     double intTest = (b*b) - 4.0 *c;
     if(intTest > 0.0){
+        //if intercestion then calc where intersection
+        double numSQRT = sqrtf(intTest);
+        double  t1 = (-b + numSQRT) / 2.0;
+        double  t2 = (-b - numSQRT) / 2.0;
+        //if one negative then one part behind camera, ignore it
+        if((t1 < 0.0) || (t2 < 0.0)){
+            return false;
+        }
+        else{
+            //determine closest intersection
+            if(t1 < t2){
+                intPoint = castRay.m_point1 + (vhat * t1);
+            }else{
+                intPoint = castRay.m_point1 + (vhat * t2);
+            }
+            //compute local normal
+            localNormal = intPoint;
+            localNormal.Normalized();
+
+
+        }
         return true;
+
     }
     else{
         return false;

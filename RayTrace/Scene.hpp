@@ -12,6 +12,8 @@
 #include "Camera.hpp"
 #include "ObjSphere.hpp"
 #include "PointLight.hpp"
+#include "ObjPlane.hpp"
+
 
 namespace RT
 {

@@ -5,7 +5,7 @@
 #include "Scene.hpp"
 
 RT::Scene::Scene() {
-    m_camera.SetPosition(qbVector<double>{std::vector<double> {0.0,-10.0, 0.0}});
+    m_camera.SetPosition(qbVector<double>{std::vector<double> {0.0,-10.0, -1.0}});
     m_camera.SetLookAt(qbVector<double>{std::vector<double>{0.0,0.0,0.0}});
     m_camera.SetUp(qbVector<double>{std::vector<double>{0.0,0.0,1.0}});
     m_camera.SetHorizontalSize(0.25);
@@ -16,6 +16,11 @@ RT::Scene::Scene() {
     m_objectList.push_back(std::make_shared<RT::ObjSphere>(RT::ObjSphere()));
     m_objectList.push_back(std::make_shared<RT::ObjSphere>(RT::ObjSphere()));
     m_objectList.push_back(std::make_shared<RT::ObjSphere>(RT::ObjSphere()));
+
+    //construct test plane
+    m_objectList.push_back(std::make_shared<RT::ObjPlane>(RT::ObjPlane()));
+    m_objectList.at(3)->m_baseColor = qbVector<double>{std::vector<double> {128.0,128.0,128.0}};
+
 
     //Modify Spehere
     RT::GTform testMatrix1, testMatrix2, testMatrix3;

@@ -6,6 +6,7 @@
 #define TRAY_RACING_COMPUTER_GRAPHICS_OBJSPHERE_HPP
 
 #include "ObjectBase.hpp"
+#include "Gtfm.hpp"
 
 namespace RT
 {
@@ -15,7 +16,7 @@ namespace RT
         ObjSphere();
 
         virtual ~ObjSphere() override;
-        virtual bool TestIntersection(const Ray &castRay, qbVector<double> &intPoint, qbVector<double> &localNormal, qbVector<double> &localColor);
+        virtual bool TestIntersection(const Ray &castRay, qbVector<double> &intPoint, qbVector<double> &localNormal, qbVector<double> &localColor) override;
 
     private:
 

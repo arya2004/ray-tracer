@@ -14,10 +14,35 @@ RT::Scene::Scene() {
 
     //construct test spehere
     m_objectList.push_back(std::make_shared<RT::ObjSphere>(RT::ObjSphere()));
+    m_objectList.push_back(std::make_shared<RT::ObjSphere>(RT::ObjSphere()));
+    m_objectList.push_back(std::make_shared<RT::ObjSphere>(RT::ObjSphere()));
+
+    //Modify Spehere
+    RT::GTform testMatrix1, testMatrix2, testMatrix3;
+    testMatrix1.SetTransform(	qbVector<double>{std::vector<double>{-1.5, 0.0, 0.0}},
+                                 qbVector<double>{std::vector<double>{0.0, 0.0, 0.0}},
+                                 qbVector<double>{std::vector<double>{0.5, 0.5, 0.75}});
+
+    testMatrix2.SetTransform(	qbVector<double>{std::vector<double>{0.0, 0.0, 0.0}},
+                                 qbVector<double>{std::vector<double>{0.0, 0.0, 0.0}},
+                                 qbVector<double>{std::vector<double>{0.75, 0.5, 0.5}});
+
+    testMatrix3.SetTransform(	qbVector<double>{std::vector<double>{1.5, 0.0, 0.0}},
+                                 qbVector<double>{std::vector<double>{0.0, 0.0, 0.0}},
+                                 qbVector<double>{std::vector<double>{0.75, 0.75, 0.75}});
+
+    m_objectList.at(0) -> SetTransformMatrix(testMatrix1);
+    m_objectList.at(1) -> SetTransformMatrix(testMatrix2);
+    m_objectList.at(2) -> SetTransformMatrix(testMatrix3);
+
+    m_objectList.at(0) -> m_baseColor = qbVector<double>{std::vector<double>{64.0, 128.0, 200.0}};
+    m_objectList.at(1) -> m_baseColor = qbVector<double>{std::vector<double>{255.0, 128.0, 0.0}};
+    m_objectList.at(2) -> m_baseColor = qbVector<double>{std::vector<double>{255.0, 200.0, 0.0}};
+
 
     //single lught src
     m_lightList.push_back(std::make_shared<RT::PointLight>(RT::PointLight()));
-    m_lightList.at(0)->m_location = qbVector<double> {std::vector<double> {5.0, -10.0, 25.0}};
+    m_lightList.at(0)->m_location = qbVector<double> {std::vector<double> {5.0, -10.0, -5.0}};
     m_lightList.at(0)->m_color = qbVector<double> {std::vector<double> {255.0,255.0,255.0}};
 }
 
@@ -72,13 +97,15 @@ bool RT::Scene::Render(Image &outputImage) {
                     if(vallidilum)
                     {
                         outputImage.SetPixel(x,y, 255.0 * intensity, 0.0,0.0);
+                        outputImage.SetPixel(x,y, localColor.GetElement(0) * intensity, localColor.GetElement(1) * intensity, localColor.GetElement(2) * intensity);
+
                     }else{
-                        outputImage.SetPixel(x,y,0.0,0.0,0.0);
+                        //outputImage.SetPixel(x,y,0.0,0.0,0.0);
                     }
 
                     // outputImage.SetPixel(x,y,0.0,255.0,0.0);
                 }else{
-                    outputImage.SetPixel(x,y,0.0,0.0,0.0);
+                    //outputImage.SetPixel(x,y,0.0,0.0,0.0);
                 }
             }
             

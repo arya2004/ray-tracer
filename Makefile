@@ -7,7 +7,7 @@ LIBS = -lSDL2
 
 # Define flags.
 # CFLAGS = -std=c++17 -pg
-CFLAGS = -std=c++17
+CFLAGS = -std=c++17 -Ofast
 
 
 #obj needed. each file compiled to obj, then linker combines all

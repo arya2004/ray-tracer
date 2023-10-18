@@ -23,3 +23,7 @@ bool RT::ObjectBase::TestIntersection(const RT::Ray &castRay, qbVector<double> &
 bool RT::ObjectBase::CloseEnough(const double f1, const float f2) {
     return fabs(f1- f2) < EPSILON;
 }
+
+void RT::ObjectBase::SetTransformMatrix(const RT::GTform &transformMatrix) {
+    m_transformMatrix = transformMatrix;
+}

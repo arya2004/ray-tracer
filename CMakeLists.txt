@@ -22,4 +22,6 @@ add_executable(Tray_Racing_Computer_Graphics main.cpp
         RayTrace/LightBase.hpp
         RayTrace/PointLight.cpp
         RayTrace/PointLight.hpp
+        RayTrace/Gtfm.cpp
+        RayTrace/Gtfm.hpp
 )
